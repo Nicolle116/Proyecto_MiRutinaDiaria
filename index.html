@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mi Rutina Diaria — OVA Interactivo Infantil</title>
+  <meta name="description"
+    content="Aplicación web interactiva para niños orientada al reconocimiento de prendas, orientación espacial y autonomía en el vestido paso a paso.">
+  <meta name="theme-color" content="#2F190D">
+
+  <!-- Hojas de estilo del sistema de diseño infantil -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Contenedor principal de la experiencia -->
+  <div id="app-root">
+    <!-- Portada de inicio tipo loading (se reproduce solo al iniciar el aplicativo por primera vez) -->
+    <div id="intro-loading-screen" class="intro-loading-screen" role="dialog" aria-modal="true"
+      aria-label="Portada de bienvenida y carga">
+      <video id="intro-video" class="intro-video" autoplay playsinline preload="auto">
+        <source src="./IMG/Portada_Mirutinadiaria.mp4" type="video/mp4">
+      </video>
+      <div class="intro-loading-pill">
+        <div class="intro-spinner"></div>
+        <span>Cargando Mi Rutina Diaria...</span>
+      </div>
+      <div class="intro-bottom-bar">
+        <button id="btn-intro-unmute" class="btn btn-wood btn-intro-action hidden" aria-label="Activar sonido">
+          <span>🔊 Activar sonido</span>
+        </button>
+        <button id="btn-skip-intro" class="btn btn-wood btn-intro-action" aria-label="Saltar introducción">
+          <span>Saltar</span> <span>⏭️</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Capa de fondo ilustrado dinámico -->
+    <div id="game-background" class="game-background" role="img" aria-label="Escenario del juego"></div>
+
+    <!-- Barra superior de estado, accesibilidad y controles -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <button id="btn-menu-secciones" class="btn btn-icon" title="Menú de secciones"
+          aria-label="Menú de secciones">☰</button>
+        <button id="btn-volver-anterior" class="btn btn-icon" title="Paso o sección anterior"
+          aria-label="Anterior">◀</button>
+        <button id="btn-volver-inicio" class="btn btn-icon" title="Volver al inicio" aria-label="Inicio">🏠</button>
+        <div id="user-chip" class="user-chip" style="display: none;"></div>
+        <div id="module-badge" class="module-badge">Módulo 0: Inicio</div>
+      </div>
+      <div class="top-bar-right">
+        <button id="btn-replay-audio" class="btn btn-icon" title="Repetir instrucción"
+          aria-label="Repetir audio">🗣️</button>
+        <button id="btn-toggle-sonido" class="btn btn-icon" title="Activar / Silenciar audio"
+          aria-label="Silenciar">🔊</button>
+        <button id="btn-modo-cuidador" class="btn btn-icon" title="Modo adulto y apoyos"
+          aria-label="Panel Cuidador">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Escenario central de actividades -->
+    <main id="stage-container" class="stage-container"></main>
+
+    <!-- Subtítulos e instrucciones de voz accesibles (lateral, sin obstruir botones) -->
+    <footer id="instruction-banner" class="instruction-banner" style="display: none;">
+      <span class="instruction-icon">💡</span>
+      <p id="instruction-text" class="instruction-text"></p>
+      <button id="btn-close-instruction" class="instruction-close-btn" title="Ocultar subtítulo"
+        aria-label="Cerrar subtítulo">✕</button>
+    </footer>
+
+    <!-- Panel lateral desplegable / Menú de secciones (Hamburguesa) -->
+    <div id="drawer-overlay" class="drawer-overlay hidden" aria-hidden="true">
+      <aside id="sections-drawer" class="sections-drawer" aria-label="Menú de navegación entre secciones">
+        <div class="drawer-header">
+          <div class="drawer-title-pill">
+            <span>🗺️ Mapa de Secciones</span>
+          </div>
+          <button id="btn-cerrar-drawer" class="btn btn-icon btn-drawer-close" title="Cerrar menú"
+            aria-label="Cerrar menú">✕</button>
+        </div>
+        <div id="drawer-sections-list" class="drawer-sections-list"></div>
+      </aside>
+    </div>
+
+    <!-- Capa de diálogo modal y recompensas -->
+    <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Lógica modular Vanilla JavaScript -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+/* ==========================================================================
+   MI RUTINA DIARIA — COMPONENTES VISUALES E INTERACTIVOS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PANELES FÍSICOS Y TABLEROS DE MADERA Y CREMA
+   -------------------------------------------------------------------------- */
+.game-panel {
+  position: relative;
+  background: var(--color-cream);
+  border: var(--border-panel);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  padding: 34px 38px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 95%;
+  max-height: 92%;
+  z-index: 15;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Efecto de borde con costuras interiores (visible en R_M1_S6, R_M2_S3, etc.) */
+.panel-stitched {
+  border: var(--border-panel-thick);
+  background: var(--color-cream-light);
+  box-shadow: inset 0 0 0 4px var(--color-panel),
+              inset 0 0 0 7px rgba(125, 66, 27, 0.45),
+              var(--shadow-panel);
+}
+
+/* Encabezado en forma de etiqueta o nube redondeada */
+.panel-title-pill {
+  position: absolute;
+  top: -24px;
+  background: #FFF9F0;
+  border: 4px solid var(--color-wood);
+  border-radius: var(--radius-button);
+  padding: 6px 30px;
+  box-shadow: 0 4px 0 rgba(83, 40, 11, 0.25);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.panel-title-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   2. BOTONES ACOLCHADOS INFANTILES
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 12px 36px;
+  border-radius: var(--radius-button);
+  border: 4px solid var(--color-wood);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  outline: none;
+  text-decoration: none;
+  box-shadow: var(--shadow-button);
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.24);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: var(--shadow-button-active);
+  filter: brightness(0.95);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+  filter: grayscale(0.4);
+}
+
+/* Variantes de color según referencias */
+.btn-wood {
+  background: linear-gradient(180deg, #965325 0%, #763A14 100%);
+  color: #FFF;
+  border-color: #4D230A;
+}
+
+.btn-pink {
+  background: linear-gradient(180deg, #FF7FAE 0%, #F5558B 100%);
+  color: #FFF;
+  border-color: #6D223F;
+}
+
+.btn-coral {
+  background: linear-gradient(180deg, #FF7788 0%, #F2475E 100%);
+  color: #FFF;
+  border-color: #6E1B26;
+}
+
+.btn-blue {
+  background: linear-gradient(180deg, #81CCFF 0%, #44A6ED 100%);
+  color: #0E3553;
+  border-color: #17486E;
+}
+
+.btn-yellow {
+  background: linear-gradient(180deg, #FFE066 0%, #FFC41F 100%);
+  color: #4A3300;
+  border-color: #694A06;
+}
+
+.btn-green {
+  background: linear-gradient(180deg, #71DE84 0%, #47B95B 100%);
+  color: #0E3E17;
+  border-color: #1A5424;
+}
+
+.btn-icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.35rem;
+  background: var(--color-cream);
+  color: var(--color-wood);
+  border: 3.5px solid var(--color-wood);
+}
+
+/* --------------------------------------------------------------------------
+   3. TARJETAS DE ACTIVIDAD, PRENDAS Y CLIMA
+   -------------------------------------------------------------------------- */
+.cards-grid {
+  display: grid;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.card-item {
+  position: relative;
+  background: #683718;
+  border: 3.5px solid var(--color-wood-dark);
+  border-radius: var(--radius-card);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+}
+
+.card-item-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  border: 2px dashed rgba(255, 230, 195, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.card-item:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--color-yellow);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.28);
+}
+
+.card-item.selected {
+  border-color: var(--color-yellow);
+  background: #80451F;
+  box-shadow: 0 0 0 4px var(--color-yellow), 0 8px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.card-item.correct {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 4px var(--color-green);
+}
+
+.card-item.wrong {
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 4px var(--color-coral);
+  animation: cardShake 0.4s ease-in-out;
+}
+
+@keyframes cardShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+.card-item.disabled {
+  opacity: 0.55;
+  filter: grayscale(0.5);
+  pointer-events: none;
+}
+
+.card-item img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+}
+
+.card-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #FFF;
+  margin-top: 6px;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+}
+
+/* Indicador de paso numérico (M2 Sección 4 y 5) */
+.card-step-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-pink);
+  border: 2.5px solid #FFF;
+  color: #FFF;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.3);
+}
+
+/* --------------------------------------------------------------------------
+   4. PERSONAJE Y ÁREAS DE INTERACCIÓN
+   -------------------------------------------------------------------------- */
+.character-box {
+  position: relative;
+  background: var(--color-cream-light);
+  border: 3.5px solid var(--color-wood);
+  border-radius: var(--radius-card);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(125, 66, 27, 0.15);
+  overflow: hidden;
+}
+
+.character-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+  transition: opacity 0.3s ease, transform 0.25s ease;
+}
+
+/* Contenedor superpuesto de siluetas de prendas */
+.silhouette-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.silhouette-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Vista previa de la ventana en Módulo 1 Sección 5 centrada en la ventana */
+.clima-window-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 6%;
+}
+
+/* --------------------------------------------------------------------------
+   5. POPUP DE RETROALIMENTACIÓN (BIEN CHULO / MAL X)
+   -------------------------------------------------------------------------- */
+.feedback-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 80;
+  pointer-events: none;
+  animation: feedbackPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feedback-overlay img {
+  width: 190px;
+  height: 190px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.45));
+}
+
+@keyframes feedbackPop {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  70% { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   6. CONTENEDOR DE VIDEO DE ESCENA
+   -------------------------------------------------------------------------- */
+.video-scene-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-scene-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   6.1 PORTADA DE INICIO TIPO LOADING (VIDEO INICIAL)
+   -------------------------------------------------------------------------- */
+.intro-loading-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2F190D;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.45s ease-out, visibility 0.45s ease-out;
+}
+
+.intro-loading-screen.intro-fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #2F190D;
+  display: block;
+}
+
+.intro-bottom-bar {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1010;
+}
+
+.btn-intro-action {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  padding: 8px 22px;
+  background: var(--color-wood);
+  color: #FFF;
+  border: 3px solid var(--color-cream);
+  border-radius: var(--radius-button);
+  box-shadow: 0 4px 0 var(--color-wood-dark);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.btn-intro-action:hover {
+  background: var(--color-wood-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--color-wood-dark);
+}
+
+.btn-intro-action:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--color-wood-dark);
+}
+
+.intro-loading-pill {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(47, 25, 13, 0.85);
+  border: 2px solid var(--color-wood-light);
+  border-radius: var(--radius-button);
+  padding: 6px 16px;
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+  z-index: 1010;
+  backdrop-filter: blur(4px);
+}
+
+.intro-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid var(--color-cream);
+  border-top-color: var(--color-yellow);
+  border-radius: 50%;
+  animation: spinIntro 0.8s linear infinite;
+}
+
+@keyframes spinIntro {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   7. MODALES (NOMBRE, SALUDO, RECOMPENSAS, CUIDADOR)
+   -------------------------------------------------------------------------- */
+.modal-card {
+  position: relative;
+  background: var(--color-cream);
+  border: var(--border-panel);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  padding: 38px 42px 32px;
+  max-width: 520px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-input {
+  width: 100%;
+  background: #FFF;
+  border: 3.5px solid var(--color-wood);
+  border-radius: var(--radius-button);
+  padding: 14px 24px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  text-align: center;
+  margin: 18px 0 24px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.modal-input:focus {
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 4px rgba(255, 111, 162, 0.35);
+}
+
+.modal-text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin: 12px 0 22px;
+}
+
+/* Estrellas e insignias de recompensa */
+.stars-cluster {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.star-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+  animation: starSpin 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes starSpin {
+  from { transform: scale(0) rotate(-45deg); }
+  to { transform: scale(1) rotate(0deg); }
+}
+
+.badge-reward-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+  margin: 10px 0;
+  animation: popIn 0.4s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   8. MENÚ DESPLEGABLE / CAJÓN DE SECCIONES (HAMBURGUESA)
+   -------------------------------------------------------------------------- */
+.drawer-header {
+  background: #FFF5E4;
+  border-bottom: 3.5px solid var(--color-wood);
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(80, 40, 15, 0.12);
+}
+
+.drawer-title-pill {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-drawer-close {
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  background: var(--color-cream);
+  border: 3px solid var(--color-wood);
+  color: var(--color-wood);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-sections-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wood) var(--color-panel);
+}
+
+.drawer-sections-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.drawer-sections-list::-webkit-scrollbar-track {
+  background: var(--color-panel);
+  border-radius: 4px;
+}
+
+.drawer-sections-list::-webkit-scrollbar-thumb {
+  background: var(--color-wood);
+  border-radius: 4px;
+}
+
+.drawer-module-group {
+  background: #FFF9F0;
+  border: 2.5px solid rgba(125, 66, 27, 0.3);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 3px 0 rgba(125, 66, 27, 0.1);
+}
+
+.drawer-module-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #7D421B;
+  margin: 0 0 10px 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+.drawer-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #FFF;
+  border: 2.5px solid rgba(125, 66, 27, 0.3);
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 0 rgba(80, 40, 15, 0.15);
+  gap: 8px;
+}
+
+.drawer-item:hover {
+  background: #FFF7EC;
+  border-color: var(--color-pink);
+  transform: translateX(4px);
+  box-shadow: 0 4px 0 rgba(80, 40, 15, 0.22);
+}
+
+.drawer-item:active {
+  transform: translateX(2px) translateY(1px);
+  box-shadow: 0 1px 0 rgba(80, 40, 15, 0.2);
+}
+
+.drawer-item.current {
+  background: #FFF1C5;
+  border-color: #B57200;
+  border-width: 3px;
+  box-shadow: 0 4px 0 rgba(181, 114, 0, 0.35);
+  font-weight: 800;
+}
+
+.drawer-item-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.drawer-item-badge {
+  font-size: 1rem;
+  flex-shrink: 0;
+}

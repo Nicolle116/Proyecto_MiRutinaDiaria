@@ -1,0 +1,101 @@
+/* ==========================================================================
+   MI RUTINA DIARIA — SISTEMA DE DISEÑO E IDENTIDAD VISUAL
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@600;800;900&display=swap');
+
+:root {
+  /* Paleta cromática inspirada en las referencias ilustradas */
+  --color-cream-light: #FFF8EE;
+  --color-cream: #FFF0D8;
+  --color-panel: #FFE5C4;
+  --color-panel-inner: #FFF3DE;
+  
+  --color-wood: #7D421B;
+  --color-wood-dark: #53280B;
+  --color-wood-light: #A45C2C;
+  --color-wood-tint: rgba(125, 66, 27, 0.12);
+
+  --color-text: #361908;
+  --color-text-muted: #6E4528;
+
+  --color-pink: #FF6FA2;
+  --color-pink-dark: #D84279;
+  --color-coral: #FF6376;
+  --color-coral-dark: #D4394E;
+  --color-blue: #58BAF5;
+  --color-blue-dark: #2985C2;
+  --color-yellow: #FFCF3E;
+  --color-yellow-dark: #DDA211;
+  --color-green: #59CF6E;
+  --color-green-dark: #37A24A;
+
+  /* Formas y bordes */
+  --radius-panel: 32px;
+  --radius-card: 22px;
+  --radius-button: 999px;
+  --radius-inner: 18px;
+
+  --border-panel: 5px solid var(--color-wood);
+  --border-panel-thick: 6px solid var(--color-wood);
+  --border-card: 3.5px solid var(--color-wood);
+  --border-inner: 3px solid rgba(125, 66, 27, 0.35);
+
+  /* Sombras y profundidad */
+  --shadow-panel: 0 12px 0 var(--color-wood-dark), 0 16px 28px rgba(0, 0, 0, 0.28);
+  --shadow-panel-subtle: 0 8px 0 var(--color-wood-dark);
+  --shadow-card: 0 6px 0 rgba(83, 40, 11, 0.22);
+  --shadow-button: 0 6px 0 rgba(0, 0, 0, 0.22);
+  --shadow-button-active: 0 2px 0 rgba(0, 0, 0, 0.22);
+
+  /* Tipografía */
+  --font-display: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
+  --font-body: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+
+  /* Transiciones */
+  --transition-fast: 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-bounce: 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Resets y reglas globales */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: #2F190D;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Accesibilidad: foco visible */
+:focus-visible {
+  outline: 4px solid var(--color-yellow);
+  outline-offset: 3px;
+}
+
+/* Utilidad global para ocultar elementos */
+.hidden {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
